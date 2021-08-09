@@ -81,3 +81,11 @@ p = (+a + +b + +c)/2;
 let s = Math.sqrt(p*(p-a)*(p-b)*(p-c));
 console.log('Square of triangle = ' + s.toFixed(3));
 }
+
+if ( a*a + b*b == c*c ) {
+    console.log('This is right triangle');
+} 
+else {
+    console.log('This is NOT right triangle');
+}
+
