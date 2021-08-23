@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<!--     task 1      -->
+	<div id="test">First</div>
+    <script>
+        let elem = document.getElementById('test');
+        elem.innerHTML = 'Last';
+
+        let elem1 = document.querySelector('div');
+        elem1.innerHTML = 'Last';
+
+        let elem2 = document.body;
+        alert(elem2);
+        elem2.innerHTML = 'Last';
+    </script>
+
+
+	<!--      task 2     -->
+	<img class="image" src="dog.jpg">
+    <script>
+        let elem = document.getElementsByClassName('image')[0];
+        elem.src = 'cat.jpg';
+        alert(elem.outerHTML);
+    </script>
+
+     
+	<!--      task 3      -->
+	<h2>Article header</h2>      
+      <div id="text">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+      </div>
+	<p>Another text</p>
+    <script>
+        let elementDiv = document.getElementById('text');
+        let elem = elementDiv.querySelectorAll('p');
+            elem[0].innerHTML ='Selector text 0 : First paragraph';
+            elem[1].innerHTML ='Selector text 1 : Second paragraph';
+            elem[2].innerHTML ='Selector text 2 : Third paragraph';
+    </script>
+
+
+	<!--      task 4     -->
+	<ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        // 1st way
+        alert(document.querySelector('ul > li:first-child').innerHTML);
+        alert(document.querySelector('ul > li:last-child').innerHTML);
+        alert(document.querySelectorAll('ul > li')[1].innerHTML);
+        alert(document.querySelectorAll('ul > li')[3].innerHTML);
+        alert(document.querySelectorAll('ul > li')[2].innerHTML);
+        //2nd way
+        alert(document.getElementById('list').getElementsByTagName('li')[0].innerHTML);
+        alert(document.getElementById('list').getElementsByTagName('li')[4].innerHTML);
+        alert(document.getElementById('list').getElementsByTagName('li')[1].innerHTML);
+        alert(document.getElementById('list').getElementsByTagName('li')[3].innerHTML);
+        alert(document.getElementById('list').getElementsByTagName('li')[2].innerHTML);
+    </script>
+
+
+	<!--      task 5     -->
+	<h1>I'am a big header!!!</h1>
+     <div id="myDiv">
+         <p>First paragraph</p>
+         <p>Second paragraph</p>
+         <p>Third paragraph</p>
+         <p>Fourth paragraph</p>
+     </div>
+     <ul id="myList">
+         <li>Make</li>
+         <li>me</li>
+         <li>horizontal!</li>
+     </ul>
+     <span>Make me invisible, please!</span>
+     <script>
+         document.querySelector('h1').style.backgroundColor = 'green';
+
+         let divList = document.getElementById('myDiv');
+         divList.firstElementChild.style.fontWeight = '900';
+         divList.children[1].style.color = 'red';
+         divList.children[2].style.textDecoration = 'underline';
+         divList.lastElementChild.style.fontStyle = 'italic';
+
+        let lis = document.getElementById('myList').children[0];
+        lis.style.display = 'inline';
+        let lis1 = document.getElementById('myList').children[1];
+        lis1.style.display = 'inline';
+        let lis2 = document.getElementById('myList').children[2];
+        lis2.style.display = 'inline';
+
+        let spa = document.querySelector('span');
+        spa.style.display = 'none';
+     </script>
+
+
+	<!--      task 6     -->
+	<input type="text" id="input1" value="Text1">
+     <input type="text" id="input2" value="Text2">
+     <script>
+         let mes1 = prompt('First message', 'Hello first');
+         let mes2 = prompt('Second message', 'Hello second');
+         
+         document.getElementById('input1').value = mes1;
+         document.getElementById('input2').value = mes2;
+
+         document.getElementById('input1').value = mes2;
+         document.getElementById('input2').value = mes1;
+     </script>
+     
+</body>
+
+</html>
