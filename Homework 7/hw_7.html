@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--   task 1   -->
+    <script>
+        let win1 = window.open(' ', 'GOOGLE', 'width = 300, height = 300');
+        setTimeout(function() {
+            win1.resizeTo(500, 500);
+        }, 2000);
+        setTimeout(function() {
+            win1.moveTo(200, 200);
+        }, 4000);
+        setTimeout(function() {
+            win1.close();
+        }, 8000);
+    </script>
+
+
+<!--   task 2   -->
+    <p id='text'>I learn JavaScript events!</p>
+    <div>
+        <button>Change style!</button>
+    </div>
+    <script>
+            function changeCSS() {
+                let parag = document.getElementById('text');
+                parag.style.color = 'orange';
+                parag.style.fontSize = '20px';
+                parag.style.fontFamily = 'Comic Sans MS'; 
+            }
+            let btn = document.querySelector('button');
+            btn.addEventListener('click', changeCSS);
+    </script>
+    
+
+<!--   task 3   -->
+    <div>
+        <button id='blueCol'>Click to make the page blue.</button> <button id='doubleClick'>Double-click to make the page pink.</button> <button id='brownHold'>Click and hold to make the page brown.</button> <a href="url" id='yellowLink'>Hover over to make page yellow</a>
+    </div>
+
+    <script>
+        function firstButton() {
+            document.body.style.backgroundColor = 'blue';
+        }
+        let btn1 = document.getElementById('blueCol');
+        btn1.addEventListener('click', firstButton);
+
+        function secondButton() {
+            document.body.style.backgroundColor = 'pink';
+        }
+        let btn2 = document.getElementById('doubleClick');
+        btn2.addEventListener('dblclick', secondButton);
+
+        function thirdButtonOnmouse() {
+            document.body.style.backgroundColor = 'brown';
+        }
+
+        function thirdButtonMouseUp() {
+            document.body.style.backgroundColor = 'white';
+        }
+        let btn3 = document.getElementById('brownHold');
+        btn3.addEventListener('mousedown', thirdButtonOnmouse);
+        btn3.addEventListener('mouseup', thirdButtonMouseUp);
+
+        function fourthButtonMouseOver() {
+            document.body.style.backgroundColor = 'yellow';
+        }
+
+        function fourthButtonMouseLeave() {
+            document.body.style.backgroundColor = 'white';
+        }
+        let link4 = document.getElementById('yellowLink');
+        link4.addEventListener('mouseover', fourthButtonMouseOver);
+        link4.addEventListener('mouseleave', fourthButtonMouseLeave);
+    </script>
+
+
+ <!--   task 4   -->
+    <select  id="name">
+        <option value="peter">Peter</option>
+        <option value="john">John</option>
+        <option value="alise">Alise</option>
+        <option value="alex">Alex</option>
+        <option value="iren">Iren</option>
+    </select> 
+    <button id = 'deleteBut'>Choose and Delete</button>
+
+    <script>
+        function DeleteName() {
+            let dropDown = document.getElementById('name');
+            for (let i = 0; i <= dropDown.options.length; i++)
+                if (dropDown.options[i].selected){
+                    dropDown.removeChild(dropDown.options[i]);
+                    break;
+                }
+        }
+        let btn = document.getElementById('deleteBut');
+        btn.addEventListener('click', DeleteName);
+    </script>
+
+<!--   task 5   --> 
+    <button id = 'messageBut'>Choose and Delete</button>
+    <div id = 'contain'></div>
+    <script>
+        let currentDiv = document.getElementById('contain');
+
+        function MouseOnMe() {
+            let newP = document.createElement('p');
+            currentDiv.append(newP);
+            newP.textContent = 'Mouse on me!';
+        }
+
+        function IWasPassed() {
+            let newP = document.createElement('p');
+            currentDiv.append(newP);
+            newP.textContent = 'I was passed!';
+        }
+
+        function NotOnMe() {
+            let newP = document.createElement('p');
+            currentDiv.append(newP);
+            newP.textContent = 'Mouse is not on me!';
+        }
+        let btn = document.getElementById('messageBut');
+        btn.addEventListener('mouseover', MouseOnMe);
+        btn.addEventListener('click', IWasPassed);
+        btn.addEventListener('mouseleave', NotOnMe);
+    </script>
+
+
+<!--   task 6   --> 
+    <p> </p>
+    <script>
+        window.onresize = displayWindowSize;
+        window.onload = displayWindowSize;
+
+        function displayWindowSize() {
+            myWidth = window.innerWidth;
+            myHeight = window.innerHeight;
+            document.querySelector('p').innerHTML = myWidth + " x " + myHeight;
+        }
+    </script>
+
+
+<!--   task 7   --> 
+    <select id="country" onchange="makeSubmenu(this.value)">
+        <option value="" disabled selected>Choose country</option>
+        <option>Germany</option>
+        <option>USA</option>
+        <option>Ukraine</option>
+        </select>
+    
+        <select id="cities" onchange="displaySelected()" >
+        <option></option>
+        </select>
+        <p id = 'p'></p>
+    
+     <script>
+        const citiesList = {
+            Germany: ['Berlin', 'Munich', 'Frankfurt', 'Hamburg'],
+            USA: ['New York', 'Chicago', 'Los Angeles', 'San Francisco'],
+            Ukraine: ['Kyiv', 'Lviv', 'Kharkiv', 'Odessa']
+        }
+
+        function makeSubmenu(value) {
+            if (value.length == 0) document.getElementById("cities").innerHTML = "<option></option>";
+            else {
+                var citiesOptions = "";
+                for (cityId in citiesList[value]) {
+                    citiesOptions += "<option>" + citiesList[value][cityId] + "</option>";
+                }
+                document.getElementById("cities").innerHTML = citiesOptions;
+            }
+        }
+
+        function displaySelected() {
+            var country = document.getElementById("country").value;
+            var city = document.getElementById("cities").value;
+            let field = document.getElementById('p');
+            field.innerHTML = country + ', ' + city;
+        }
+    </script>
+    
+</body>
+</html>
