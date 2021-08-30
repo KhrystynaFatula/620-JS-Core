@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <select id="country" onchange="makeSubmenu(this.value)">
+        <option value="" disabled selected>Choose country</option>
+        <option>Germany</option>
+        <option>USA</option>
+        <option>Ukraine</option>
+        </select>
+    
+        <select id="cities" onchange="displaySelected()" >
+        <option></option>
+        </select>
+        <p id = 'p'></p>
+    
+     <script>
+        const citiesList = {
+            Germany: ['Choose city','Berlin', 'Munich', 'Frankfurt', 'Hamburg'],
+            USA: ['Choose city','New York', 'Chicago', 'Los Angeles', 'San Francisco'],
+            Ukraine: ['Choose city','Kyiv', 'Lviv', 'Kharkiv', 'Odessa']
+        }
+
+        function makeSubmenu(value) {
+            if (value.length == 0) document.getElementById("cities").innerHTML = "<option></option>";
+            else {
+                let citiesOptions = "";
+                for (cityId in citiesList[value]) {
+                    citiesOptions += "<option>" + citiesList[value][cityId] + "</option>";
+                }
+                document.getElementById("cities").innerHTML = citiesOptions;
+            }
+        }
+
+        function displaySelected() {
+            let country = document.getElementById("country").value;
+            let city = document.getElementById("cities").value;
+            let field = document.getElementById('p');
+            field.innerHTML = country + ', ' + city;
+        }
+    </script>
+    
+</body>
+</html>
